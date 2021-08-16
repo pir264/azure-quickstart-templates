@@ -9,6 +9,19 @@
         "description": "The unique name of your Web Site."
       }
     },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
     "administratorLogin": {
       "type": "string",
       "minLength": 1,
@@ -109,8 +122,8 @@
     "serverName": "[concat('mysql-',  uniqueString(resourceGroup().id))]",
     "hostingPlanName": "[concat('hpn-',  uniqueString(resourceGroup().id))]",
     "storageAccountName": "[concat('pwstor-',  uniqueString(resourceGroup().id))]",
-    "functionAppName": "[concat('pwfunctionAppName-',  uniqueString(resourceGroup().id))]",
-    "storageAccountType": "Standard_LRS"
+    "functionAppName": "[concat('pwfunctionAppName-',  uniqueString(resourceGroup().id))]"
+    
 
   },
   "resources": [
