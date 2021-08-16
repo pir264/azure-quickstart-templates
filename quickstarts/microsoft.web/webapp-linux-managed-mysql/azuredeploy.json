@@ -230,5 +230,5 @@
         "name": "[parameters('storageAccountType')]"
       }
     }
-  ]
+  ] 
 }
