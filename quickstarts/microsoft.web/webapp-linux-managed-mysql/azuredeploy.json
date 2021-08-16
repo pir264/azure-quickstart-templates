@@ -121,8 +121,8 @@
     "databaseName": "[concat('database', uniqueString(resourceGroup().id))]",
     "serverName": "[concat('mysql-',  uniqueString(resourceGroup().id))]",
     "hostingPlanName": "[concat('hpn-',  uniqueString(resourceGroup().id))]",
-    "storageAccountName": "[concat('pwstor-',  uniqueString(resourceGroup().id))]",
-    "functionAppName": "[concat('pwfunctionAppName-',  uniqueString(resourceGroup().id))]"
+    "storageAccountName": "[concat('pwstore',  uniqueString(resourceGroup().id))]",
+    "functionAppName": "[concat('pwfunctionAppName',  uniqueString(resourceGroup().id))]"
     
 
   },
