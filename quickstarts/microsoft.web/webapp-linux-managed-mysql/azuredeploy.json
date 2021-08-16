@@ -107,7 +107,11 @@
   "variables": {
     "databaseName": "[concat('database', uniqueString(resourceGroup().id))]",
     "serverName": "[concat('mysql-',  uniqueString(resourceGroup().id))]",
-    "hostingPlanName": "[concat('hpn-',  uniqueString(resourceGroup().id))]"
+    "hostingPlanName": "[concat('hpn-',  uniqueString(resourceGroup().id))]",
+    "storageAccountName": "[concat('pwstor-',  uniqueString(resourceGroup().id))]",
+    "functionAppName": "[concat('pwfunctionAppName-',  uniqueString(resourceGroup().id))]",
+    "storageAccountType": "Standard_LRS"
+
   },
   "resources": [
     {
@@ -202,6 +206,27 @@
           }
         }
       ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2019-06-01",
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('functionAppName')]",
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+      ]
     }
+  
   ]
 }
