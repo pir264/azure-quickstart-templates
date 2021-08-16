@@ -237,7 +237,7 @@
       "location": "[resourceGroup().location]",
       "kind": "functionapp,linux",
       "properties": {
-        "enabled": false
+        "enabled": true
       },
 
       "dependsOn": [
